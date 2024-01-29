@@ -1,25 +1,17 @@
-var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
-
-var onBtnClick = function (t, opts) {
-  console.log('Someone clicked the button');
-};
-
 window.TrelloPowerUp.initialize({
-  'card-buttons': function (t, opts) {
-    return [{
-      // usually you will provide a callback function to be run on button click
-      // we recommend that you use a popup on click generally
-      icon: GRAY_ICON, // don't use a colored icon here
-      text: 'Open Popup',
-      callback: onBtnClick,
-      condition: 'edit'
-    }, {
-      // but of course, you could also just kick off to a url if that's your thing
-      icon: GRAY_ICON,
-      text: 'Just a URL',
-      condition: 'always',
-      url: 'https://developer.atlassian.com/cloud/trello',
-      target: 'Trello Developer Site' // optional target for above url
-    }];
-  }
-});
+    'card-buttons': function (t, options) {
+      return [
+        {
+          text: 'Open Widget',
+          callback: function (t) {
+            return t.modal({
+              url: 'https://notebook.zoho.com/app_zfinance/allnotes?serviceOrigin=https%3A%2F%2Fbooks.zoho.com&frameorigin=https%3A%2F%2Fbooks.zoho.com&integration_service=books&orgid=770845011',
+              height: 500, // Set the desired height
+              fullscreen: false,
+              args: { text: 'Hello World!' }, // You can pass additional data if needed
+            });
+          },
+        },
+      ];
+    },
+  });
